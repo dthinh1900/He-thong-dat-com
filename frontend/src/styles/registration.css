@@ -1,0 +1,170 @@
+.registration-page { width: min(812px, calc(100% - 28px)); margin: 22px auto 38px; }
+.registration-page__title {
+  color: var(--navy); font-size: var(--text-title); font-weight: var(--weight-heading);
+  margin: 0 0 3px; line-height: 1.25; white-space: nowrap;
+}
+.registration-panel {
+  min-height: 615px; background: #fff;
+  border: 1px solid #dfdfdf; border-radius: 6px;
+  box-shadow: 0 2px 5px #00000050; padding: 16px 27px 16px 28px;
+}
+.registration-panel__intro h2 { font-size: var(--text-heading); font-weight: var(--weight-heading); margin: 0 0 9px 10px; color: var(--navy);}
+.registration-panel__intro p { margin: 0 0 16px 10px; color: red; font-size: 14px; font-style: italic; }
+.registration-legend { margin-left: 10px; margin-bottom: 29px; display: flex; flex-direction: column; gap: 7px; }
+.registration-legend__item { display: flex; align-items: center; gap: 9px; font-size: var(--text-small); }
+.registration-legend__dot {
+  flex: 0 0 30px; width: 30px; height: 30px;
+  border: 1px solid #202020; border-radius: 50%; background: #fff;
+}
+.registration-panel__unsaved .preview-link { margin-inline-start: 8px; }
+.registration-legend__dot--registered { background: var(--orange); }
+.registration-panel__body { display: grid; grid-template-columns: 476px minmax(0, 1fr); gap: 32px; align-items: start; }
+.month-calendar {
+  display: grid; grid-template-columns: 145px minmax(0, 1fr);
+  width: 476px; height: 351px; overflow: hidden;
+  border-radius: 3px; box-shadow: 1px 3px 7px #00000065;
+}
+.month-calendar__hero { background: var(--orange); color: #fff; position: relative; }
+.month-calendar__checked {
+  position: absolute; right: 4px; top: 4px; width: 22px; height: 16px;
+  background: #fff; color: var(--orange); font-weight: 700;
+  border-radius: 2px; text-align: center; line-height: 16px; font-size: 12px;
+}
+.month-calendar__hero-content { position: absolute; top: 122px; left: 0; right: 0; text-align: center; }
+.month-calendar__navigation { display: flex; align-items: center; justify-content: space-between; }
+.month-calendar__navigation button {
+  background: none; border: none; color: #fff; padding: 0 3px;
+  font-size: 30px; line-height: 1;
+}
+.month-calendar__big-day { font-size: 110px; font-weight: 300; letter-spacing: -9px; line-height: 1; padding-right: 5px; }
+.month-calendar__month-label { font-size: 12px; white-space: nowrap; letter-spacing: .2px; margin-top: 2px; }
+.month-calendar__body { background: var(--cream); padding: 43px 20px 16px; }
+.month-calendar__weekdays, .month-calendar__days { display: grid; grid-template-columns: repeat(7, 1fr); justify-items: center; }
+.month-calendar__weekdays { font-size: 13px; font-weight: 700; margin-bottom: 15px; }
+.month-calendar__weekdays span { min-width: 31px; text-align: center; }
+.month-calendar__days { gap: 10px 0; }
+.month-calendar__date {
+  width: 32px; height: 32px; padding: 0; border: 1px solid #252525;
+  border-radius: 50%; background: transparent; color: #151515;
+  font-size: 13px; display: inline-flex; align-items: center; justify-content: center;
+  transition: background-color 150ms ease;
+}
+.month-calendar__date:hover { background: #ffe69c; }
+.month-calendar__date--selected { background: var(--orange); }
+.month-calendar__date--selected:hover { background: #f5a800; }
+.registration-summary { padding-top: 96px; min-width: 0; }
+.registration-summary__details { margin: 0; display: flex; flex-direction: column; gap: 24px; }
+.registration-summary__details div { display: grid; grid-template-columns: 112px minmax(0,1fr); gap: 7px; font-size: 12px; }
+.registration-summary__details dt, .registration-summary__details dd { margin: 0; }
+.registration-summary__details dd { white-space: normal; }
+.registration-summary__actions { display: flex; gap: 11px; margin-top: 24px; }
+.registration-summary__actions .button { min-height: 35px; padding: 8px 10px; }
+.registration-panel__footer { text-align: center; margin-top: 30px; }
+.registration-panel__footer .form-message { width: fit-content; max-width: 100%; margin: -18px auto 7px; }
+.registration-panel__unsaved { color: #9a6616; margin: -18px 0 7px; font-size: 12px; }
+@media (max-width: 950px) {
+  .registration-page__title { white-space: normal; }
+}
+@media (max-width: 820px) {
+  .registration-panel { padding: 20px 18px 22px; }
+  .registration-panel__body { grid-template-columns: 1fr; justify-items: center; gap: 24px; }
+  .registration-summary { padding-top: 0; width: min(476px, 100%); }
+  .registration-summary__details { gap: 10px; }
+  .registration-summary__details div { grid-template-columns: 130px 1fr; font-size: 14px; }
+  .registration-summary__actions { margin-top: 15px; }
+  .registration-panel__footer { margin-top: 30px; }
+}
+@media (max-width: 530px) {
+  .registration-page { width: calc(100% - 20px); margin-top: 20px; }
+  .registration-panel { padding: 17px 12px 20px; }
+  .registration-panel__intro h2, .registration-panel__intro p, .registration-legend { margin-left: 0; }
+  .registration-legend { margin-bottom: 22px; }
+  .month-calendar { width: 100%; max-width: 360px; height: auto; grid-template-columns: 1fr; }
+  .month-calendar__hero { height: 105px; }
+  .month-calendar__hero-content { top: 10px; }
+  .month-calendar__big-day { font-size: 58px; letter-spacing: -5px; }
+  .month-calendar__month-label { margin-top: -2px; }
+  .month-calendar__navigation { padding: 0 30px; }
+  .month-calendar__body { padding: 18px 12px 20px; min-height: 305px; }
+  .month-calendar__days { gap: 8px 0; }
+  .registration-summary__actions { flex-wrap: wrap; }
+}
+
+/* Ngày quá hạn/cuối tuần chỉ để xem, click sẽ hiển thị lý do bị khóa. */
+.registration-legend__dot--locked { background: #eeeeee; border-style: dashed; }
+.month-calendar__date--locked { cursor: not-allowed; opacity: 0.48; }
+.month-calendar__date--locked:hover { background: transparent; }
+.month-calendar__date--selected.month-calendar__date--locked { background: var(--orange); }
+.month-calendar__date--selected.month-calendar__date--locked:hover { background: var(--orange); }
+.month-calendar__date--weekend:not(.month-calendar__date--selected) { border-style: dashed; background: #eaeaea; }
+.month-calendar__date--weekend:not(.month-calendar__date--selected):hover { background: #eaeaea; }
+
+
+/* Minor responsive refinements: keep the original calendar's 7 columns and large tap targets. */
+@media(max-width:530px){.month-calendar__body{min-height:0}.month-calendar__days{gap:9px 0}.month-calendar__date{width:34px;height:34px}.registration-panel__footer .button--save{min-height:44px}.registration-summary{padding:0 2px}}
+/* Locked days remain legible; only interaction is forbidden. */
+.month-calendar__date--locked{opacity:.74}.month-calendar__date--selected.month-calendar__date--locked{opacity:.83}
+
+
+.registration-legend__row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
+.registration-legend__cancelled {
+  border: 0;
+  padding: 0;
+  min-height: 40px;
+  background: transparent;
+  color: var(--navy);
+  font-weight: var(--weight-heading);
+}
+.registration-legend__cancelled:hover { text-decoration: underline; }
+.registration-legend__dot--cancelled,
+.month-calendar__date.month-calendar__date--cancelled {
+  background: var(--meal-cancelled);
+  border-color: var(--meal-cancelled-border);
+  border-style: dashed;
+  color: #684e23;
+}
+.registration-legend__dot--cancelled { display: grid; place-items: center; font-size: 17px; }
+.month-calendar__date.month-calendar__date--cancelled:hover { background: #ffebad; }
+.month-calendar__cancellation-mark {
+  position: absolute;
+  top: -4px;
+  right: -3px;
+  width: 14px;
+  height: 14px;
+  line-height: 12px;
+  border: 1px solid var(--meal-cancelled-border);
+  border-radius: 50%;
+  background: #fff6de;
+  color: #704c12;
+  font-weight: var(--weight-heading);
+  font-size: 12px;
+}
+.cancelled-tickets__day h3 { margin: 16px 0 8px; color: var(--navy); font-size: var(--text-body); }
+.cancelled-tickets__ticket {
+  display: grid;
+  grid-template-columns: minmax(100px, 2fr) minmax(0, 3fr);
+  gap: 6px 12px;
+  margin: 0 0 10px;
+  padding: 12px;
+  background: #fffaf0;
+  border: 1px solid #ede1c8;
+  border-radius: var(--radius-panel);
+  font-size: var(--text-small);
+}
+.cancelled-tickets__ticket dt { color: var(--text-muted); font-weight: var(--weight-heading); }
+.cancelled-tickets__ticket dd { margin: 0; overflow-wrap: anywhere; }
+
+/* Suất đặc biệt dùng tông đỏ cam; thay đổi chưa lưu được thể hiện bằng màu ngày,
+   không dùng vòng viền nét đứt quanh ngày đã chọn. */
+.registration-legend__dot--special {
+  background: #ef5538;
+  border-color: #252525;
+}
+.month-calendar__date--special {
+  background: #ef5538;
+  border-color: #252525;
+  border-style: solid;
+  color: #fff;
+}
+.month-calendar__date--special:hover { background: #df452b; }
+.month-calendar__date--special.month-calendar__date--locked { opacity: .83; }

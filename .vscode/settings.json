@@ -1,0 +1,6 @@
+{
+  "editor.formatOnSave": true,
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "java.configuration.updateBuildConfiguration": "automatic"
+}

@@ -1,0 +1,1 @@
+package com.mealbooking.backend.domain.enums; public enum ExchangeStatus { OPEN, PARTIALLY_FILLED, COMPLETED, CANCELLED, EXPIRED }

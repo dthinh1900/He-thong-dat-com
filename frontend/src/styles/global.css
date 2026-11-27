@@ -1,0 +1,108 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100%;
+  --text-title: clamp(22px, 3vw, 30px);
+  --text-heading: 18px;
+  --text-body: 14px;
+  --text-small: 13px;
+  --text-caption: 12px;
+  --weight-heading: 600;
+  --table-heading: #f3f7fb;
+  --table-border: #e4eaf1;
+  --text-muted: #526478;
+  --radius-panel: 8px;
+  --meal-cancelled: #fff0bf;
+  --meal-cancelled-border: #b79a58;
+  color: #111827;
+  background: #fff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --orange: #ffb91f;
+  --orange-dark: #f0a912;
+  --cream: #fffbd2;
+  --navy: #074b88;
+  --cyan: #17a2b8;
+  --blue: #087dff;
+  --border: #cfd7e2;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; padding-top: 64px; }
+button, input, select, textarea { font: inherit; }
+body { font-size: var(--text-body); line-height: 1.45; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: 0.6; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid #90caf9; outline-offset: 2px; }
+a { color: inherit; }
+.app-content { width: 100%; }
+.button {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px; border: 0; border-radius: 4px; color: #fff;
+  padding: 9px 12px; text-decoration: none; white-space: nowrap;
+  font-size: var(--text-small); line-height: 1.2;
+  transition: filter 140ms ease, transform 140ms ease;
+}
+.button:hover { filter: brightness(0.94); }
+.button:active { transform: translateY(1px); }
+.button--blue { background: var(--blue); }
+.button--cyan { background: var(--cyan); }
+.button--save { background: var(--orange); border-radius: 22px; min-width: 182px; min-height: 40px; }
+.panel-heading {
+  margin: 0; background: var(--orange); color: #111; font-size: var(--text-heading);
+  font-weight: var(--weight-heading); padding: 14px 20px; line-height: 1.2;
+}
+.form-message { padding: 8px 10px; font-size: 12px; margin: 2px 0 12px; border-radius: 4px; }
+.form-message--error { background: #fff0f0; color: #a31414; }
+.form-message--success { background: #f0f9ef; color: #1e712e; }
+
+.app-loading { max-width: 812px; margin: 48px auto; padding: 20px; color: #48515c; text-align: center; }
+.registration-panel__loading { color: #48515c; font-size: 13px; margin: -12px 0 18px 10px; }
+
+
+.app-dialog {
+  width: min(540px, calc(100% - 24px));
+  max-height: calc(100dvh - 24px);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-panel);
+  background: #fff;
+  color: inherit;
+  box-shadow: 0 12px 32px #102f5030;
+}
+.app-dialog::backdrop { background: #10233885; }
+.app-dialog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--table-border);
+  background: var(--table-heading);
+  color: var(--navy);
+}
+.app-dialog__header h2 { margin: 0; font-size: var(--text-heading); font-weight: var(--weight-heading); }
+.app-dialog__header button {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: inherit;
+  font-size: 23px;
+}
+.app-dialog__body { padding: 16px; }
+.app-dialog__note { margin: 0 0 12px; color: var(--text-muted); font-size: var(--text-small); }
+.app-dialog__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; margin-top: 16px; }
+.app-dialog__actions .app-dialog__note { margin: 0; }
+.cancellation-form label { display: block; margin-bottom: 6px; font-weight: var(--weight-heading); }
+.cancellation-form textarea {
+  width: 100%;
+  padding: 8px 10px;
+  resize: vertical;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}

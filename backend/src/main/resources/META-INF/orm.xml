@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence/orm https://jakarta.ee/xml/ns/persistence/orm/orm_3_1.xsd"
+    version="3.1">
+    <package>com.mealbooking.backend.domain.model</package>
+    <entity class="AuditLog" access="FIELD">
+        <table name="audit_logs"/>
+        <pre-persist method-name="onCreate"/>
+        <attributes>
+            <id name="id"><generated-value strategy="IDENTITY"/></id>
+            <basic name="action"><column nullable="false" length="40"/><enumerated>STRING</enumerated></basic>
+            <basic name="description"><column length="1500"/></basic>
+            <basic name="createdAt"><column name="created_at" nullable="false" updatable="false"/></basic>
+            <many-to-one name="actor" fetch="LAZY" optional="false"><join-column name="actor_id" nullable="false"/></many-to-one>
+            <many-to-one name="ticket" fetch="LAZY"><join-column name="ticket_id"/></many-to-one>
+            <many-to-one name="transaction" fetch="LAZY"><join-column name="transaction_id"/></many-to-one>
+        </attributes>
+    </entity>
+
+    <entity class="Department" access="FIELD">
+        <table name="departments"/>
+        <attributes>
+            <id name="id"><generated-value strategy="IDENTITY"/></id>
+            <basic name="name"><column nullable="false" unique="true" length="150"/></basic>
+            <basic name="description"><column length="500"/></basic>
+            <basic name="active"><column nullable="false"/></basic>
+            <one-to-many name="users" mapped-by="department"/>
+        </attributes>
+    </entity>
+
+    <entity class="MealPrice" access="FIELD">
+        <table name="meal_prices"/>
+        <pre-persist method-name="onCreate"/>
+        <attributes>
+            <id name="id"><generated-value strategy="IDENTITY"/></id>
+            <basic name="ticketType"><column name="ticket_type" nullable="false" length="20"/><enumerated>STRING</enumerated></basic>
+            <basic name="price"><column nullable="false" precision="12" scale="2"/></basic>
+            <basic name="effectiveFrom"><column name="effective_from" nullable="false"/></basic>
+            <basic name="effectiveTo"><column name="effective_to"/></basic>
+            <basic name="createdAt"><column name="created_at" nullable="false" updatable="false"/></basic>
+            <many-to-one name="createdBy" fetch="LAZY"><join-column name="created_by"/></many-to-one>
+        </attributes>
+    </entity>
+
+    <entity class="MealRegistration" access="FIELD">
+        <table name="meal_registrations"/>
+        <pre-persist method-name="onCreate"/>
+        <attributes>
+            <id name="id"><generated-value strategy="IDENTITY"/></id>
+            <basic name="registrationCode"><column name="registration_code" nullable="false" unique="true" length="50"/></basic>
+            <basic name="month"><column nullable="false"/></basic>
+            <basic name="year"><column nullable="false"/></basic>
+            <basic name="createdAt"><column name="created_at" nullable="false" updatable="false"/></basic>
+            <many-to-one name="user" fetch="LAZY" optional="false"><join-column name="user_id" nullable="false"/></many-to-one>
+        </attributes>
+    </entity>
+
+    <entity class="MealTicket" access="FIELD">
+        <table name="meal_tickets"/>
+        <pre-persist method-name="onCreate"/>
+        <attributes>
+            <id name="id"><generated-value strategy="IDENTITY"/></id>
+            <basic name="ticketCode"><column name="ticket_code" nullable="false" unique="true" length="50"/></basic>
+            <basic name="mealDate"><column name="meal_date" nullable="false"/></basic>
+            <basic name="ticketType"><column name="ticket_type" nullable="false" length="20"/><enumerated>STRING</enumerated></basic>
+            <basic name="price"><column nullable="false" precision="12" scale="2"/></basic>
+            <basic name="status"><column nullable="false" length="30"/><enumerated>STRING</enumerated></basic>
+            <basic name="createdAt"><column name="created_at" nullable="false" updatable="false"/></basic>
+            <basic name="cancelledAt"><column name="cancelled_at"/></basic>
+            <basic name="cancellationSource"><column name="cancellation_source" length="10"/><enumerated>STRING</enumerated></basic>
+            <basic name="cancellationReason"><column name="cancellation_reason" length="500"/></basic>
+            <many-to-one name="registration" fetch="LAZY"><join-column name="registration_id"/></many-to-one>
+            <many-to-one name="purchaseRequest" fetch="LAZY"><join-column name="purchase_request_id"/></many-to-one>
+            <many-to-one name="owner" fetch="LAZY" optional="false"><join-column name="owner_id" nullable="false"/></many-to-one>
+            <many-to-one name="mealPrice" fetch="LAZY" optional="false"><join-column name="meal_price_id" nullable="false"/></many-to-one>
+            <many-to-one name="cancelledBy" fetch="LAZY"><join-column name="cancelled_by"/></many-to-one>
+        </attributes>
+    </entity>
+
+    <entity class="TicketExchange" access="FIELD">
+        <table name="ticket_exchanges"/>
+        <pre-persist method-name="onCreate"/>
+        <attributes>
+            <id name="id"><generated-value strategy="IDENTITY"/></id>
+            <basic name="exchangeCode"><column name="exchange_code" nullable="false" unique="true" length="50"/></basic>
+            <basic name="saleGroup"><column name="sale_group" length="50"/></basic>
+            <basic name="exchangeType"><column name="exchange_type" nullable="false" length="20"/><enumerated>STRING</enumerated></basic>
+            <basic name="mealDate"><column name="meal_date" nullable="false"/></basic>
+            <basic name="ticketType"><column name="ticket_type" nullable="false" length="20"/><enumerated>STRING</enumerated></basic>
+            <basic name="quantityRequested"><column name="quantity_requested" nullable="false"/></basic>
+            <basic name="quantityCompleted"><column name="quantity_completed" nullable="false"/></basic>
+            <basic name="status"><column nullable="false" length="30"/><enumerated>STRING</enumerated></basic>
+            <basic name="createdAt"><column name="created_at" nullable="false" updatable="false"/></basic>
+            <basic name="completedAt"><column name="completed_at"/></basic>
+            <many-to-one name="requester" fetch="LAZY" optional="false"><join-column name="requester_id" nullable="false"/></many-to-one>
+            <many-to-one name="ticket" fetch="LAZY"><join-column name="ticket_id"/></many-to-one>
+        </attributes>
+    </entity>
+
+    <entity class="TicketExchangeTransaction" access="FIELD">
+        <table name="ticket_exchange_transactions"/>
+        <pre-persist method-name="onCreate"/>
+        <attributes>
+            <id name="id"><generated-value strategy="IDENTITY"/></id>
+            <basic name="transactionCode"><column name="transaction_code" nullable="false" unique="true" length="50"/></basic>
+            <basic name="amount"><column precision="12" scale="2" updatable="false"/></basic>
+            <basic name="completedAt"><column name="completed_at" nullable="false"/></basic>
+            <many-to-one name="buyRequest" fetch="LAZY"><join-column name="buy_request_id"/></many-to-one>
+            <many-to-one name="sellRequest" fetch="LAZY"><join-column name="sell_request_id"/></many-to-one>
+            <many-to-one name="ticket" fetch="LAZY" optional="false"><join-column name="ticket_id" nullable="false"/></many-to-one>
+            <many-to-one name="seller" fetch="LAZY" optional="false"><join-column name="seller_id" nullable="false"/></many-to-one>
+            <many-to-one name="buyer" fetch="LAZY" optional="false"><join-column name="buyer_id" nullable="false"/></many-to-one>
+        </attributes>
+    </entity>
+
+    <entity class="TicketPurchase" access="FIELD">
+        <table name="ticket_purchases"/>
+        <pre-persist method-name="onCreate"/>
+        <attributes>
+            <id name="id"><generated-value strategy="IDENTITY"/></id>
+            <basic name="purchaseCode"><column name="purchase_code" nullable="false" unique="true" length="50"/></basic>
+            <basic name="mealDate"><column name="meal_date" nullable="false"/></basic>
+            <basic name="ticketType"><column name="ticket_type" nullable="false" length="20"/><enumerated>STRING</enumerated></basic>
+            <basic name="quantity"><column nullable="false"/></basic>
+            <basic name="totalAmount"><column name="total_amount" precision="14" scale="2"/></basic>
+            <basic name="status"><column nullable="false" length="20"/><enumerated>STRING</enumerated></basic>
+            <basic name="note"><column length="1000"/></basic>
+            <basic name="reviewedAt"><column name="reviewed_at"/></basic>
+            <basic name="createdAt"><column name="created_at" nullable="false" updatable="false"/></basic>
+            <many-to-one name="requester" fetch="LAZY" optional="false"><join-column name="requester_id" nullable="false"/></many-to-one>
+            <many-to-one name="quotedPrice" fetch="LAZY"><join-column name="quoted_price_id"/></many-to-one>
+            <many-to-one name="reviewedBy" fetch="LAZY"><join-column name="reviewed_by"/></many-to-one>
+        </attributes>
+    </entity>
+
+    <entity class="User" access="FIELD">
+        <table name="users"/>
+        <pre-persist method-name="onCreate"/>
+        <pre-update method-name="onUpdate"/>
+        <attributes>
+            <id name="id"><generated-value strategy="IDENTITY"/></id>
+            <basic name="employeeCode"><column name="employee_code" nullable="false" unique="true" length="50"/></basic>
+            <basic name="username"><column nullable="false" unique="true" length="80"/></basic>
+            <basic name="password"><column nullable="false" length="255"/></basic>
+            <basic name="fullName"><column name="full_name" nullable="false" length="160"/></basic>
+            <basic name="email"><column length="160"/></basic>
+            <basic name="phone"><column length="30"/></basic>
+            <basic name="role"><column nullable="false" length="20"/><enumerated>STRING</enumerated></basic>
+            <basic name="active"><column nullable="false"/></basic>
+            <basic name="createdAt"><column name="created_at" nullable="false" updatable="false"/></basic>
+            <basic name="updatedAt"><column name="updated_at" nullable="false"/></basic>
+            <many-to-one name="department" fetch="LAZY" optional="false"><join-column name="department_id" nullable="false"/></many-to-one>
+        </attributes>
+    </entity>
+</entity-mappings>

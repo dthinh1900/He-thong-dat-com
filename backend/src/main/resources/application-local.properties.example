@@ -1,0 +1,18 @@
+# Copy to backend/config/application-local.properties; keep secrets outside the JAR.
+spring.datasource.url=${DB_URL:jdbc:postgresql://localhost:5432/meal_booking_db}
+spring.datasource.username=${DB_USERNAME:postgres}
+spring.datasource.password=${DB_PASSWORD:}
+
+# Optional local JWT secret (at least 32 UTF-8 bytes); empty rotates sessions every restart.
+app.jwt.secret=${JWT_SECRET:}
+
+# Optional on first installation. Supply actual operator and department information.
+# app.initial-admin.enabled=true
+# app.initial-admin.username=
+# app.initial-admin.employee-code=
+# app.initial-admin.full-name=
+# app.initial-admin.department=
+# app.initial-admin.password=
+
+# Uncomment only when the default backend port is occupied; match frontend/.env.local.
+# server.port=8081

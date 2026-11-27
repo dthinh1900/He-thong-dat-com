@@ -1,0 +1,26 @@
+# Java
+**/target/
+*.class
+*.log
+
+# Node & Vite
+**/node_modules/
+**/dist/
+**/.vite/
+
+# Env & credentials
+.env
+.env.*
+!.env.example
+/.local/
+/backend/.mvn/maven.config
+
+
+# IDE/OS
+.idea/
+*.iml
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db

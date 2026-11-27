@@ -1,0 +1,34 @@
+# Maven build
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# IDE - IntelliJ IDEA
+.idea/
+*.iml
+out/
+!/src/main/java/com/mealbooking/backend/application/port/out/
+
+# IDE - Visual Studio Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+# Local backend configuration
+**/application-local.properties

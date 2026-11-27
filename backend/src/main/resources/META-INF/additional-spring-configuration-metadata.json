@@ -1,0 +1,41 @@
+{
+    "properties": [
+        {
+            "name": "app.time-zone",
+            "type": "java.lang.String",
+            "description": "Múi giờ sử dụng trong ứng dụng."
+        },
+        {
+            "name": "app.cors.allowed-origin",
+            "type": "java.lang.String",
+            "description": "Địa chỉ frontend được phép truy cập backend."
+        },
+        {
+            "name": "app.jwt.secret",
+            "type": "java.lang.String",
+            "description": "Khóa bí mật dùng để ký JWT."
+        },
+        {
+            "name": "app.jwt.expiration-minutes",
+            "type": "java.lang.Integer",
+            "description": "Thời hạn JWT tính bằng phút."
+        },
+        {
+            "name": "app.registration.exclude-weekends",
+            "type": "java.lang.Boolean",
+            "description": "Có loại trừ ngày cuối tuần khi đăng ký hay không."
+        },
+        {
+            "name": "app.database.bootstrap.enabled",
+            "type": "java.lang.Boolean",
+            "description": "Tự tạo database local đặt cơm nếu chưa tồn tại, trước Flyway.",
+            "defaultValue": true
+        },
+        {
+            "name": "app.initial-admin.enabled",
+            "type": "java.lang.Boolean",
+            "description": "Cấp tài khoản quản trị đầu tiên từ cấu hình khi database chưa có tài khoản.",
+            "defaultValue": false
+        }
+    ]
+}

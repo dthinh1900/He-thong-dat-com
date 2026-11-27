@@ -1,0 +1,127 @@
+.login-page {
+  max-width: 462px;
+  margin: 23px auto 0;
+  padding: 0 0 36px;
+}
+
+.login-page__identity {
+  min-height: 135px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2px;
+  background-image: radial-gradient(#e7e7e7 0.55px, transparent 0.55px);
+  background-position: center;
+  background-size: 14px 14px;
+}
+
+.meal-symbol {
+  display: block;
+  margin-top: 0;
+}
+
+.login-page__identity h1 {
+  color: var(--navy);
+  font-weight: var(--weight-heading);
+  font-size: var(--text-title);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.login-card {
+  background: var(--cream);
+  border: 1px solid #e3e3e3;
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+}
+
+.login-card .panel-heading {
+  padding-left: 18px;
+}
+
+.login-card__form {
+  padding: 16px 22px 18px;
+}
+
+.login-card__field {
+  display: grid;
+  grid-template-columns: 133px 1fr;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.login-card__field label {
+  text-align: right;
+  font-size: var(--text-small);
+}
+
+.login-card__field input {
+  max-width: 202px;
+  width: 100%;
+  height: 35px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 7px 10px;
+  background: #fff;
+}
+
+.login-card__remember {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-left: 143px;
+  font-size: 14px;
+  margin: 2px 0 17px;
+  cursor: pointer;
+}
+
+.login-card__remember input {
+  margin: 0;
+  width: 13px;
+  height: 13px;
+}
+
+.login-card__submit {
+  padding-left: 143px;
+}
+
+@media (max-width: 520px) {
+  .login-page {
+    margin: 24px 14px 0;
+  }
+
+  .login-card__form {
+    padding: 16px;
+  }
+
+  .login-card__field {
+    grid-template-columns: 112px 1fr;
+  }
+
+  .login-card__remember,
+  .login-card__submit {
+    padding-left: 122px;
+  }
+}
+
+@media (max-width: 380px) {
+  .login-card__field {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .login-card__field label {
+    text-align: left;
+  }
+
+  .login-card__field input {
+    max-width: none;
+  }
+
+  .login-card__remember,
+  .login-card__submit {
+    padding-left: 0;
+  }
+}

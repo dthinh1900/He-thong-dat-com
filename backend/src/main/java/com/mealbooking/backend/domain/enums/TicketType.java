@@ -1,0 +1,1 @@
+package com.mealbooking.backend.domain.enums; public enum TicketType { NORMAL, SPECIAL }
