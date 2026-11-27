@@ -3,7 +3,12 @@ FROM maven:3.9.9-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
-RUN mvn -B clean package -DskipTests
+RUN for attempt in 1 2 3 4 5; do \
+    mvn -U -B clean package -DskipTests && exit 0; \
+    echo "Maven build failed. Retrying after ${attempt}0 seconds..."; \
+    sleep $((attempt * 10)); \
+done; \
+exit 1
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app
